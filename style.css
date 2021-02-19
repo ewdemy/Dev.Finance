@@ -8,11 +8,25 @@
     --dark-blue:  #363f5f;
 }
 
+html{
+    font-size: 93.75%;
+}
 body{
     background: #f0f2f5;
     font-family: "Poppins", sans-serif;
 }
 
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
 .container{
     width: min(90vw, 800px);
     margin: auto;
@@ -23,6 +37,19 @@ h2{
     margin-bottom: 0.8rem;
     color: var(--dark-blue);
     font-weight: normal;
+}
+
+a{
+    color: #49aa26;
+    text-decoration: none;
+}
+a:hover{
+    color: #3dd705;
+}
+
+.button.new{
+    display: inline-block;
+    margin-bottom: 0.8rem;
 }
 
 header{
@@ -56,6 +83,9 @@ header{
 .card h3{
     font-weight: normal;
     font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card p{
@@ -68,6 +98,12 @@ header{
     background: #49aa26;
     color: #fff;
 
+}
+
+#transaction{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
 }
 
 #data-table{
@@ -101,6 +137,11 @@ table tbody tr td:first-child{
     border-radius: 0.25rem 0 0 0.25rem;
 }
 
+table thead tr th:last-child,
+table tbody tr td:last-child{
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
 td.description{
     color: var(--dark-blue);
 }
@@ -113,9 +154,97 @@ td.expense{
     color: #e92929;
 }
 
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.modal-overlay.active{
+    opacity: 1;
+    visibility: visible;
+}
+.modal{
+    background: #f0f2f5;
+    padding: 2.4rem;
+}
+
+#form{
+    max-width: 500px;
+}
+#form h2{
+    margin-top: 0;
+}
+input{
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+.input-group{
+    margin-top: 0.8rem;
+}
+.input-group small{
+    opacity: 0.4;
+}
+.input-group.actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+.input-group.actions .button,
+.input-group.actions button{
+    width: 48%;
+}
+
+button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: #fff;
+    background: #49aa26;
+    padding: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+button:hover{
+    background: #3dd705
+}
+
+.button.cancel{
+    color: #e92929;
+    border: 2px #e92929 solid;
+    border-radius: 0.25rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+.button.cancel:hover{
+    opacity: 1;
+}
+
 footer{
     text-align: center;
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
     opacity: 0.6;
+}
+
+@media (min-width: 800px){
+    html{
+        font-size: 87.5%;
+    }
+    #balance{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
 }
